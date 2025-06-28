@@ -2,6 +2,7 @@ import 'package:daily_quotes_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:daily_quotes_app/QuotesManagement.dart';
+import 'package:daily_quotes_app/ThemeToggle.dart';
 
 class GeneratorPage extends StatefulWidget {
   const GeneratorPage({super.key});
@@ -30,6 +31,12 @@ class _GeneratorPage extends State<GeneratorPage> {
       icon = Icons.favorite_border;
     }
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quotes'),
+        actions: const [
+          Padding(padding: EdgeInsets.all(10.0), child: DarkLightToggle()),
+        ],
+      ),
       body: Center(
         child: managerState.isLoading
             ? const CircularProgressIndicator()

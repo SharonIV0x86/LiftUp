@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:daily_quotes_app/QuotesManagement.dart';
 import 'package:daily_quotes_app/GeneratorPage.dart';
+import 'package:daily_quotes_app/app_theme.dart';
+import 'package:daily_quotes_app/ThemeToggle.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => QuotesManager()),
+        ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+      ],
+      child: const MyApp(),
+    ),
+  );
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,19 +23,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
     return ChangeNotifierProvider(
       create: (context) => QuotesManager(),
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.yellow,
-            brightness: Brightness.dark,
-          ),
-          scaffoldBackgroundColor: Colors.amber[50],
-        ),
-
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        themeMode: themeNotifier.themeMode,
         home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
@@ -100,7 +107,7 @@ class FavoritesPage extends StatelessWidget {
       color: theme.colorScheme.onPrimary,
     );
     if (managerState.quotes_list.isEmpty) {
-      return Center(child: Text("No Favorites Yet", style: style));
+      return Center(child: Text("No Favorites Yet"));
     }
     return Scaffold(
       body: ListView(
@@ -109,12 +116,11 @@ class FavoritesPage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               "You have ${managerState.quotes_list.length} favorites",
-              style: style,
             ),
           ),
           for (var quote in managerState.quotes_list)
             (ListTile(
-              title: Text(quote.text, style: style),
+              title: Text(quote.text),
               leading: Icon(Icons.favorite),
               trailing: IconButton(
                 onPressed: () {
@@ -140,13 +146,11 @@ class QuoteCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     final quoteStyle = theme.textTheme.bodyLarge!.copyWith(
-      color: const Color.fromARGB(221, 53, 37, 37),
       fontWeight: FontWeight.bold,
       fontSize: 20,
     );
 
     final authorStyle = theme.textTheme.bodyMedium!.copyWith(
-      color: const Color.fromARGB(180, 53, 37, 37),
       fontSize: 16,
       fontStyle: FontStyle.italic,
     );
