@@ -1,0 +1,20 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.idea/
+*.iml
+
+# iOS/Android native
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace/
+android/.gradle/
+android/app/key.properties
+
+# VSCode/IntelliJ
+.vscode/
+*.swp
+
+# Others
+.env
