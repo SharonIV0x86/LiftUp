@@ -1,6 +1,6 @@
-# daily_quotes_app
+# LiftUp
 
-A new Flutter project.
+A basic app for daily motivation quotes.
 
 ## Getting Started
 
