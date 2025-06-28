@@ -15,10 +15,12 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+
 <div align="center">
 
+<h2>Light Mode</h2>
+
 <table>
-  <h1> Light Mode </h1>
   <tr>
     <td>
       <img src="https://github.com/user-attachments/assets/9f7090cd-47e6-462d-adb0-116f1275bfb3" width="200"/>
@@ -27,7 +29,11 @@ samples, guidance on mobile development, and a full API reference.
       <img src="https://github.com/user-attachments/assets/4a9673d0-1e8a-4ad5-a9db-46a1cde1c13f" width="200"/>
     </td>
   </tr>
-  <h1> Dark Mode </h1>
+</table>
+
+<h2>Dark Mode</h2>
+
+<table>
   <tr>
     <td>
       <img src="https://github.com/user-attachments/assets/217af300-cc44-4dc9-9dcf-5e4f79c8b413" width="200"/>
